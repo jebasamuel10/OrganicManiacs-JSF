@@ -5,12 +5,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
 <body>
 
 	<ui:composition>
 		<h:form id="headerForm">
-			<p:autoComplete id="search" value="#{header.searchString}" placeholder="Search Category/Product/Recipe" completeMethod="#{header.completeSearch}" icon="fa fa-fw fa-search" />
+			<p:autoComplete id="acSimple" value="#{header.searchString}"
+				completeMethod="#{header.completeSearch}" minQueryLength="3"
+				maxResults="10" forceSelection="true" effect="fade" >
+			</p:autoComplete>
 		</h:form>
 	</ui:composition>
 </body>
