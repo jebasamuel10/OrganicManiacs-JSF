@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import com.web.model.Category;
 import com.web.model.Product;
 
+@ManagedBean(name = "addProduct")
+@ViewScoped
 public class AddProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Product pro;

@@ -14,16 +14,16 @@ public class Product implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	private enum measuringUnit {
+	public enum measuringUnit {
 		Gram, KG, lt, Nos
 	};
 
-	private enum scale {
+	public enum scaleLst {
 		ONE(1), TWO(2), FIVE(5), TEN(10), FIFTY(50), HUNDRED(100), TWO_HUNDRED(200), TWO_FIFTY(250), FIVE_HUNDRED(
 				500), SEVEN_FIFTY(750);
 		private int value;
 
-		private scale(int value) {
+		private scaleLst(int value) {
 			this.value = value;
 		}
 	};
@@ -32,6 +32,7 @@ public class Product implements Serializable {
 	private ImageDetail defaultImage;
 	private String productName;
 	private String shortDesc;
+	private String categoryName;
 	private double mrp;
 	private double ourPrice;
 	private int stock;
@@ -54,6 +55,12 @@ public class Product implements Serializable {
 	}
 	public void setDefaultImage(ImageDetail defaultImage) {
 		this.defaultImage = defaultImage;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public String getProductName() {
 		return productName;

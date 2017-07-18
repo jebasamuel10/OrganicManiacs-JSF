@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition>
+		<h:form id="addProductForm">
+			<p:inputText id="productName" label="Product Name" required="true"
+				value="#{addProduct.pro.productName}"></p:inputText>
+			<p:inputText label="Product Desc" required="true"
+				value="#{addProduct.pro.shortDesc}"></p:inputText>
+				<p:inputTextarea rows="6" cols="33" autoResize="true" value="#{addProduct.pro.longDesc}"/>
+			<p:selectOneMenu id="category" label="Product Category"
+				value="#{addProduct.pro.categoryName}" style="width:150px">
+				<f:selectItem itemLabel="Select Category" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{addProduct.proCategory}" />
+			</p:selectOneMenu>
+			<p:dataTable id="benifits" var="benifit"
+				value="#{addProduct.pro.benifits}" editable="true"
+				style="margin-bottom:20px">
+
+				<p:column headerText="URL">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{benifit.url}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput" value="#{benifit.url}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Description">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{benifit.desc}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{benifit.desc}" style="width:100%"
+								label="Desc" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Video?">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:selectBooleanButton id="value" value="#{benifit.video}"
+								onLabel="Yes" offLabel="No" style="width:60px" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectBooleanButton id="value1" value="#{benifit.video}"
+								onLabel="Yes" offLabel="No" style="width:60px" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:rowEditor />
+				</p:column>
+			</p:dataTable>
+			
+			<p:dataTable id="recipe" var="recipe"
+				value="#{addProduct.pro.recipe}" editable="true"
+				style="margin-bottom:20px">
+
+				<p:column headerText="URL">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{recipe.url}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{recipe.url}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Description">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{recipe.desc}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{recipe.desc}" style="width:100%"
+								label="Desc" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Video?">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:selectBooleanButton  value="#{recipe.video}"
+								onLabel="Yes" offLabel="No" style="width:60px" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectBooleanButton  value="#{recipe.video}"
+								onLabel="Yes" offLabel="No" style="width:60px" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:rowEditor />
+				</p:column>
+			</p:dataTable>
+			<p:calendar  value="#{addProduct.pro.packedDate}" label="Packed Date"/>
+			<p:calendar  value="#{addProduct.pro.expireDate}" label="Expire Date"/>
+			<p:calendar  value="#{addProduct.pro.receivedDate}" label="Received Date"/>
+			<p:selectOneMenu id="unit" label="Unit"
+				value="#{addProduct.pro.measuringUnit}" style="width:150px">
+				<f:selectItem itemLabel="Select Unit" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{addProduct.pro.measuringUnit}" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="scale" label="Scale"
+				value="#{addProduct.pro.scale}" style="width:150px">
+				<f:selectItem itemLabel="Select Scale" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{addProduct.pro.scale}" />
+			</p:selectOneMenu>
+			 <p:inputNumber id="mrp" label="MRP" value="#{addProduct.pro.mrp}" symbol=" Rs" symbolPosition="s" 
+                               decimalSeparator="." thousandSeparator="," decimalPlaces="2">  
+                </p:inputNumber>
+			 <p:inputNumber id="ourPrice" label="Our Price" value="#{addProduct.pro.ourPrice}" symbol=" Rs" symbolPosition="s" 
+                               decimalSeparator="." thousandSeparator="," decimalPlaces="2">  
+                </p:inputNumber>
+
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>
