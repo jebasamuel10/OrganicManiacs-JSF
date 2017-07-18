@@ -7,6 +7,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import com.web.service.SearchService;
+import com.web.service.SearchServiceImpl;
+
 @ManagedBean(name = "header")
 @ViewScoped
 public class Header implements Serializable {
@@ -22,11 +25,6 @@ public class Header implements Serializable {
 	}
 
 	public List<String> completeSearch(String str) {
-		List<String> result = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			result.add(i + "String  " + i);
-			System.out.println(i + "String  " + i);
-		}
-		return result;
+		return SearchServiceImpl.getObject().completeSearch(str);
 	}
 }

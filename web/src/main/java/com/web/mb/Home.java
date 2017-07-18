@@ -12,6 +12,7 @@ import com.web.model.CarouselItem;
 import com.web.model.Category;
 import com.web.model.ImageDetail;
 import com.web.model.Product;
+import com.web.service.SearchServiceImpl;
 
 
 @ManagedBean(name = "home")
@@ -43,40 +44,8 @@ public class Home implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		carouselList = new ArrayList<>();
-		for(int i=0;i<6;i++){
-			CarouselItem ci= new CarouselItem();
-			ci.setCaption("Caption :"+i);
-			ci.setHeader("Header :"+i);
-			ci.setImageLocation(""+i+".jpg");
-			carouselList.add(ci);
-			System.out.println(ci.getImageLocation());
-		}
-		bestSellingItems = new ArrayList<>();
-		for(int i=0;i<10;i++){
-			Product pr= new Product();
-			pr.setProductName("Product Name"+i);
-			ImageDetail id= new ImageDetail();
-			id.setImgLocation(""+i+".jpg");
-			pr.setDefaultImage(id);
-			pr.setShortDesc("Short Description"+i);
-			pr.setMrp(100);
-			//pr.setMeasuringUnit(KG);
-			//pr.setScale(1);
-			bestSellingItems.add(pr);
-			System.out.println(pr.getDefaultImage().getImgLocation());
-		}
-		categoryList = new ArrayList<>();
-		for(int i=0;i<10;i++){
-			ImageDetail id= new ImageDetail();
-			id.setImgLocation(""+i+".jpg");
-			Category cat= new Category();
-			cat.setCategoryName("Category Name"+i);
-			
-			cat.setImg(id);
-			
-			System.out.println("cat"+cat.getImg().getImgLocation());
-			categoryList.add(cat);
-		}
+		carouselList = SearchServiceImpl.getObject().getCarouselList();
+		bestSellingItems = SearchServiceImpl.getObject().getBestSellers();
+		categoryList = SearchServiceImpl.getObject().getCategoryList();
 	}
 }

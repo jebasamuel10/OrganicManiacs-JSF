@@ -7,6 +7,14 @@ public class SupportURL implements Serializable {
 	private String url;
 	private String desc;
 	private boolean video;
+	private String id;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getUrl() {
 		return url;
 	}

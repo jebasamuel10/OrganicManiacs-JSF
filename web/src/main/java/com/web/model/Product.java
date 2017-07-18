@@ -1,11 +1,19 @@
 package com.web.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	private String id;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	private enum measuringUnit {
 		Gram, KG, lt, Nos
 	};
@@ -25,12 +33,16 @@ public class Product implements Serializable {
 	private String productName;
 	private String shortDesc;
 	private double mrp;
+	private double ourPrice;
 	private int stock;
 	private String measuringUnit;
 	private int scale;
 	private String longDesc;
 	private List<SupportURL> benifits;
 	private List<SupportURL> recipe;
+	private Date packedDate;
+	private Date receivedDate;
+	private Date expireDate;
 	public List<ImageDetail> getImgList() {
 		return imgList;
 	}
@@ -54,6 +66,30 @@ public class Product implements Serializable {
 	}
 	public void setShortDesc(String shortDesc) {
 		this.shortDesc = shortDesc;
+	}
+	public double getOurPrice() {
+		return ourPrice;
+	}
+	public void setOurPrice(double ourPrice) {
+		this.ourPrice = ourPrice;
+	}
+	public Date getPackedDate() {
+		return packedDate;
+	}
+	public void setPackedDate(Date packedDate) {
+		this.packedDate = packedDate;
+	}
+	public Date getReceivedDate() {
+		return receivedDate;
+	}
+	public void setReceivedDate(Date receivedDate) {
+		this.receivedDate = receivedDate;
+	}
+	public Date getExpireDate() {
+		return expireDate;
+	}
+	public void setExpireDate(Date expireDate) {
+		this.expireDate = expireDate;
 	}
 	public double getMrp() {
 		return mrp;
