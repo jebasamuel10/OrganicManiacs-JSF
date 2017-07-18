@@ -1,7 +1,6 @@
 package com.web.mb;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,9 +9,8 @@ import javax.faces.bean.ViewScoped;
 
 import com.web.model.CarouselItem;
 import com.web.model.Category;
-import com.web.model.ImageDetail;
 import com.web.model.Product;
-import com.web.service.SearchServiceImpl;
+import com.web.service.ProductServiceImpl;
 
 
 @ManagedBean(name = "home")
@@ -44,8 +42,8 @@ public class Home implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		carouselList = SearchServiceImpl.getObject().getCarouselList();
-		bestSellingItems = SearchServiceImpl.getObject().getBestSellers();
-		categoryList = SearchServiceImpl.getObject().getCategoryList();
+		carouselList = ProductServiceImpl.getObject().getCarouselList();
+		bestSellingItems = ProductServiceImpl.getObject().getBestSellers();
+		categoryList = ProductServiceImpl.getObject().getCategoryList();
 	}
 }
