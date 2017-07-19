@@ -12,6 +12,7 @@
 <h:body>
 	<ui:composition>
 		<h:form id="addProductForm">
+		<p:growl id="msgs" showDetail="true" />
 			<p:inputText id="productName" label="Product Name" required="true"
 				value="#{addProduct.pro.productName}"></p:inputText>
 			<p:inputText label="Product Desc" required="true"
@@ -117,13 +118,13 @@
 				value="#{addProduct.pro.measuringUnit}" style="width:150px">
 				<f:selectItem itemLabel="Select Unit" itemValue=""
 					noSelectionOption="true" />
-				<f:selectItems value="#{addProduct.pro.measuringUnit}" />
+				<f:selectItems value="#{addProduct.pro.measuringUnitLst}" />
 			</p:selectOneMenu>
 			<p:selectOneMenu id="scale" label="Scale"
 				value="#{addProduct.pro.scale}" style="width:150px">
 				<f:selectItem itemLabel="Select Scale" itemValue=""
 					noSelectionOption="true" />
-				<f:selectItems value="#{addProduct.pro.scale}" />
+				<f:selectItems value="#{addProduct.pro.scaleLst}" />
 			</p:selectOneMenu>
 			 <p:inputNumber id="mrp" label="MRP" value="#{addProduct.pro.mrp}" symbol=" Rs" symbolPosition="s" 
                                decimalSeparator="." thousandSeparator="," decimalPlaces="2">  
@@ -131,7 +132,8 @@
 			 <p:inputNumber id="ourPrice" label="Our Price" value="#{addProduct.pro.ourPrice}" symbol=" Rs" symbolPosition="s" 
                                decimalSeparator="." thousandSeparator="," decimalPlaces="2">  
                 </p:inputNumber>
-
+		<p:commandButton value="Submit" icon="ui-icon-check" update="msgs" actionListener="#{addProduct.saveProduct}" />
+ 
 		</h:form>
 	</ui:composition>
 </h:body>

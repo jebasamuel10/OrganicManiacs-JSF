@@ -1,6 +1,7 @@
 package com.web.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,20 +15,38 @@ public class Product implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public enum measuringUnit {
-		Gram, KG, lt, Nos
-	};
+	private List<String> measuringUnitLst = Arrays.asList(
+			new String("Gram")
+			,new String("KG")
+			,new String("ltr")
+			,new String("Nos")
+			);
+	
 
-	public enum scaleLst {
-		ONE(1), TWO(2), FIVE(5), TEN(10), FIFTY(50), HUNDRED(100), TWO_HUNDRED(200), TWO_FIFTY(250), FIVE_HUNDRED(
-				500), SEVEN_FIFTY(750);
-		private int value;
+	private List<String> scaleLst = Arrays.asList(
+			new String("1")
+			,new String("2")
+			,new String("5")
+			,new String("10")
+			,new String("50")
+			,new String("100")
+			,new String("200")
+			,new String("250")
+			,new String("500")
+			,new String("750"));
 
-		private scaleLst(int value) {
-			this.value = value;
-		}
-	};
-
+	public List<String> getMeasuringUnitLst() {
+		return measuringUnitLst;
+	}
+	public void setMeasuringUnitLst(List<String> measuringUnitLst) {
+		this.measuringUnitLst = measuringUnitLst;
+	}
+	public List<String> getScaleLst() {
+		return scaleLst;
+	}
+	public void setScaleLst(List<String> scaleLst) {
+		this.scaleLst = scaleLst;
+	}
 	private List<ImageDetail> imgList;
 	private ImageDetail defaultImage;
 	private String productName;

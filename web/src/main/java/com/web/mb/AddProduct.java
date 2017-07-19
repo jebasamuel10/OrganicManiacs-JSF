@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.web.model.Category;
 import com.web.model.Product;
+import com.web.service.AdminServiceImpl;
 
 @ManagedBean(name = "addProduct")
 @ViewScoped
@@ -34,5 +35,9 @@ public class AddProduct implements Serializable {
 	public void init(){
 		pro=new Product();
 		proCategory = new ArrayList<>();
+	}
+	public void saveProduct(){
+		AdminServiceImpl.getObject().saveProduct(pro);
+		
 	}
 }

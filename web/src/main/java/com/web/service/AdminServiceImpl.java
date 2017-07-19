@@ -1,5 +1,7 @@
 package com.web.service;
 
+import com.web.model.Product;
+
 public class AdminServiceImpl implements AdminService {
 	private AdminServiceImpl() {
 	}
@@ -17,6 +19,12 @@ public class AdminServiceImpl implements AdminService {
 
 	public static AdminServiceImpl getObject() {
 		return service;
+	}
+
+	@Override
+	public void saveProduct(Product pro) {
+		System.out.println("completed");
+		
 	}
 
 }

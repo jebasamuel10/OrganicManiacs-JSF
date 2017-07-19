@@ -1,5 +1,7 @@
 package com.web.service;
 
-public interface AdminService {
+import com.web.model.Product;
 
+public interface AdminService {
+	public void saveProduct(Product pro);
 }
