@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition>
+		<h:form id="addProductForm">
+			<p:growl id="msgs" showDetail="true" />
+			<p:selectOneMenu id="category" label="Product Category"
+				value="#{addStock.selectedCategory}" style="width:150px">
+				<f:selectItem itemLabel="Select Category" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{addStock.categoryList}" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="product" label="Product Name"
+				value="#{addStock.selectedProduct}" style="width:150px">
+				<f:selectItem itemLabel="Select Product" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{addStock.productList}" />
+			</p:selectOneMenu>
+			<p:calendar value="#{addStock.proStock.packedDate}" label="Packed Date" />
+			<p:calendar value="#{addStock.proStock.expireDate}" label="Expire Date" />
+			<p:calendar value="#{addStock.proStock.receivedDate}"
+				label="Received Date" />
+			
+			<p:selectOneMenu id="scale" label="Scale"
+				value="#{addStock.proStock.scale}" style="width:150px">
+				<f:selectItem itemLabel="Select Scale" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{addStock.proStock.scaleLst}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="#{addStock.proStock.measuringUnit}"></p:outputLabel>
+			<p:inputNumber id="mrp" label="MRP" value="#{addStock.proStock.mrp}"
+				symbol=" Rs" symbolPosition="s" decimalSeparator="."
+				thousandSeparator="," decimalPlaces="2">
+			</p:inputNumber>
+			<p:inputNumber id="ourPrice" label="Our Price"
+				value="#{addStock.proStock.ourPrice}" symbol=" Rs" symbolPosition="s"
+				decimalSeparator="." thousandSeparator="," decimalPlaces="2">
+			</p:inputNumber>
+			<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
+				actionListener="#{addStock.saveStockProduct}" />
+
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>

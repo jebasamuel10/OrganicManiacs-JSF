@@ -12,12 +12,13 @@
 <h:body>
 	<ui:composition>
 		<h:form id="addProductForm">
-		<p:growl id="msgs" showDetail="true" />
+			<p:growl id="msgs" showDetail="true" />
 			<p:inputText id="productName" label="Product Name" required="true"
 				value="#{addProduct.pro.productName}"></p:inputText>
 			<p:inputText label="Product Desc" required="true"
 				value="#{addProduct.pro.shortDesc}"></p:inputText>
-				<p:inputTextarea rows="6" cols="33" autoResize="true" value="#{addProduct.pro.longDesc}"/>
+			<p:inputTextarea rows="6" cols="33" autoResize="true"
+				value="#{addProduct.pro.longDesc}" />
 			<p:selectOneMenu id="category" label="Product Category"
 				value="#{addProduct.pro.categoryName}" style="width:150px">
 				<f:selectItem itemLabel="Select Category" itemValue=""
@@ -26,8 +27,8 @@
 			</p:selectOneMenu>
 			<p:dataTable id="benifits" var="benifit"
 				value="#{addProduct.pro.benifits}" editable="true"
-				style="margin-bottom:20px">
-
+				style="margin-bottom:20px" selectionMode="single"
+				selection="#{addProduct.selectedURL}">
 				<p:column headerText="URL">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -39,7 +40,6 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-
 				<p:column headerText="Description">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -51,7 +51,6 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-
 				<p:column headerText="Video?">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -67,23 +66,24 @@
 				<p:rowEditor />
 				</p:column>
 			</p:dataTable>
-			
+			<p:contextMenu for="benifits">
+				<p:menuitem value="Delete" icon="ui-icon-delete" update="benifits"
+					actionListener="#{addProduct.delBenifits}" />
+			</p:contextMenu>
 			<p:dataTable id="recipe" var="recipe"
 				value="#{addProduct.pro.recipe}" editable="true"
-				style="margin-bottom:20px">
-
+				style="margin-bottom:20px" selectionMode="single"
+				selection="#{addProduct.selectedURL}">
 				<p:column headerText="URL">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{recipe.url}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText value="#{recipe.url}"
-								style="width:100%" />
+							<p:inputText value="#{recipe.url}" style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-
 				<p:column headerText="Description">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -95,45 +95,28 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-
 				<p:column headerText="Video?">
 					<p:cellEditor>
 						<f:facet name="output">
-							<p:selectBooleanButton  value="#{recipe.video}"
-								onLabel="Yes" offLabel="No" style="width:60px" />
+							<p:selectBooleanButton value="#{recipe.video}" onLabel="Yes"
+								offLabel="No" style="width:60px" />
 						</f:facet>
 						<f:facet name="input">
-							<p:selectBooleanButton  value="#{recipe.video}"
-								onLabel="Yes" offLabel="No" style="width:60px" />
+							<p:selectBooleanButton value="#{recipe.video}" onLabel="Yes"
+								offLabel="No" style="width:60px" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 				<p:rowEditor />
 				</p:column>
 			</p:dataTable>
-			<p:calendar  value="#{addProduct.pro.packedDate}" label="Packed Date"/>
-			<p:calendar  value="#{addProduct.pro.expireDate}" label="Expire Date"/>
-			<p:calendar  value="#{addProduct.pro.receivedDate}" label="Received Date"/>
-			<p:selectOneMenu id="unit" label="Unit"
-				value="#{addProduct.pro.measuringUnit}" style="width:150px">
-				<f:selectItem itemLabel="Select Unit" itemValue=""
-					noSelectionOption="true" />
-				<f:selectItems value="#{addProduct.pro.measuringUnitLst}" />
-			</p:selectOneMenu>
-			<p:selectOneMenu id="scale" label="Scale"
-				value="#{addProduct.pro.scale}" style="width:150px">
-				<f:selectItem itemLabel="Select Scale" itemValue=""
-					noSelectionOption="true" />
-				<f:selectItems value="#{addProduct.pro.scaleLst}" />
-			</p:selectOneMenu>
-			 <p:inputNumber id="mrp" label="MRP" value="#{addProduct.pro.mrp}" symbol=" Rs" symbolPosition="s" 
-                               decimalSeparator="." thousandSeparator="," decimalPlaces="2">  
-                </p:inputNumber>
-			 <p:inputNumber id="ourPrice" label="Our Price" value="#{addProduct.pro.ourPrice}" symbol=" Rs" symbolPosition="s" 
-                               decimalSeparator="." thousandSeparator="," decimalPlaces="2">  
-                </p:inputNumber>
-		<p:commandButton value="Submit" icon="ui-icon-check" update="msgs" actionListener="#{addProduct.saveProduct}" />
- 
+			<p:contextMenu for="recipe">
+				<p:menuitem value="Delete" icon="ui-icon-delete" update="recipe"
+					actionListener="#{addProduct.delRecipe}" />
+			</p:contextMenu>
+
+			<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
+				actionListener="#{addProduct.saveProduct}" />
 		</h:form>
 	</ui:composition>
 </h:body>

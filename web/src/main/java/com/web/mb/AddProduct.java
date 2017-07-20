@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.web.model.Category;
 import com.web.model.Product;
+import com.web.model.SupportURL;
 import com.web.service.AdminServiceImpl;
 
 @ManagedBean(name = "addProduct")
@@ -17,6 +18,14 @@ import com.web.service.AdminServiceImpl;
 public class AddProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Product pro;
+	private SupportURL selectedURL;
+	
+	public SupportURL getSelectedURL() {
+		return selectedURL;
+	}
+	public void setSelectedURL(SupportURL selectedURL) {
+		this.selectedURL = selectedURL;
+	}
 	private List<Category> proCategory;
 	public Product getPro() {
 		return pro;
@@ -38,6 +47,11 @@ public class AddProduct implements Serializable {
 	}
 	public void saveProduct(){
 		AdminServiceImpl.getObject().saveProduct(pro);
-		
+	}
+	public void delRecipe(){
+		pro.getRecipe().remove(selectedURL);
+	}
+	public void delBenifits(){
+		pro.getBenifits().remove(selectedURL);
 	}
 }

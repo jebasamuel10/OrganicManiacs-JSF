@@ -73,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
 			id.setImgLocation(""+i+".jpg");
 			pr.setDefaultImage(id);
 			pr.setShortDesc("Short Description"+i);
-			pr.setMrp(100);
+			//pr.setMrp(100);
 			//pr.setMeasuringUnit(KG);
 			//pr.setScale(1);
 			bestSellingItems.add(pr);
