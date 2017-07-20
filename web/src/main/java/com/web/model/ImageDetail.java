@@ -1,8 +1,15 @@
 package com.web.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
+
+import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 public class ImageDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,10 +21,25 @@ public class ImageDetail implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
+	private UploadedFile imgage;
 	private String imgLocation;
 	private String altText;
-	public StreamedContent getImg(){
-		return null;
+	
+	public UploadedFile getImgage() {
+		return imgage;
+	}
+	public void setImgage(UploadedFile imgage) {
+		this.imgage = imgage;
+	}
+	public StreamedContent getImg() throws IOException {
+	        FacesContext context = FacesContext.getCurrentInstance();
+
+	        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+	            return new DefaultStreamedContent();
+	        }
+	        else {
+	            return new DefaultStreamedContent(new ByteArrayInputStream(getImgage().getContents()));
+	        }
 	}
 	public String getImgLocation() {
 		return imgLocation;

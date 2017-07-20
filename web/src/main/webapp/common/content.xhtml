@@ -15,8 +15,9 @@
 			<b:carousel id="car1" interval="2500">
 				<c:forEach items="#{home.carouselList}" var="ci">
 					<b:carouselItem caption="#{ci.caption}">
-						<img src="/web/faces/img/#{ci.imageLocation}" alt="#{ci.header}"
-							style="width: 800px; height: 400px" />
+					<p:graphicImage value="#{ci.imageDetail.img}"
+							alt="Image Description for #{ci.defaultImage..altText}"
+							title="#{ci.defaultImage..altText}" width="800px" height="400px" />
 					</b:carouselItem>
 				</c:forEach>
 			</b:carousel>
@@ -29,8 +30,9 @@
 				<p:panelGrid columns="2" style="width:100%;margin:10px 10px"
 					layout="grid" styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
-						<img src="/web/faces/img/#{bs.defaultImage.imgLocation}"
-							width="100px" height="100px" />
+						<p:graphicImage value="#{bs.defaultImage.img}"
+							alt="Image Description for #{bs.defaultImage..altText}"
+							title="#{bs.defaultImage..altText}" width="100px" height="100px" />
 					</f:facet>
 					<h:outputText value="#{bs.productName}" />
 					<h:outputText value="#{bs.shortDesc}" />
@@ -45,8 +47,11 @@
 				layout="grid" rows="12" paginator="false" id="cars">
 				<p:panelGrid columns="2">
 					<f:facet name="header">
-						<img src="/web/faces/img/#{cat.img.imgLocation}" width="100px"
-							height="100px" />
+						<p:graphicImage value="#{cat.img.img}"
+							alt="Image Description for #{cat.img.altText}"
+							title="#{cat.img.altText}">
+						</p:graphicImage>
+
 					</f:facet>
 					<h:outputText value="#{cat.categoryName}Name" />
 					<h:outputText value="#{cat.categoryName}Name" />

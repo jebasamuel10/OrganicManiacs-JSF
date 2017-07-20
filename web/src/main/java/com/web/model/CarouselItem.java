@@ -7,7 +7,14 @@ public class CarouselItem implements Serializable {
 	private String imageLocation;
 	private String caption;
 	private String header;
+	private ImageDetail imageDetail;
 	
+	public ImageDetail getImageDetail() {
+		return imageDetail;
+	}
+	public void setImageDetail(ImageDetail imageDetail) {
+		this.imageDetail = imageDetail;
+	}
 	public String getImageLocation() {
 		return imageLocation;
 	}

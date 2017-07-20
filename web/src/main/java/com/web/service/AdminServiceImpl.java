@@ -1,5 +1,6 @@
 package com.web.service;
 
+import com.web.model.Category;
 import com.web.model.Product;
 
 public class AdminServiceImpl implements AdminService {
@@ -26,5 +27,12 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println("completed");
 		
 	}
+
+	@Override
+	public void addCategory(Category category) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 }

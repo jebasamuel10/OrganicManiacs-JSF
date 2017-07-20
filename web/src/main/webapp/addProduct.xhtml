@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 	<ui:composition>
-		<h:form id="addProductForm">
+		<h:form id="addProductForm" enctype="multipart/form-data">
 			<p:growl id="msgs" showDetail="true" />
 			<p:inputText id="productName" label="Product Name" required="true"
 				value="#{addProduct.pro.productName}"></p:inputText>
@@ -25,6 +25,19 @@
 					noSelectionOption="true" />
 				<f:selectItems value="#{addProduct.proCategory}" />
 			</p:selectOneMenu>
+			<p:fileUpload fileUploadListener="#{addProduct.handleFileUpload}"
+				mode="advanced" dragDropSupport="true" update="messages"
+				sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+			<p:galleria value="#{addProduct.pro.imgList}" var="image"
+				panelWidth="500" panelHeight="313" showCaption="true">
+				<p:graphicImage value="#{image.img}"
+					alt="Image Description for #{image.altText}"
+					title="#{image.altText}">
+					<f:param name="imageId" value="#{image.id}" />
+				</p:graphicImage>
+			</p:galleria>
+
 			<p:dataTable id="benifits" var="benifit"
 				value="#{addProduct.pro.benifits}" editable="true"
 				style="margin-bottom:20px" selectionMode="single"
