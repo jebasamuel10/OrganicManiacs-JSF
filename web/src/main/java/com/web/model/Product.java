@@ -13,7 +13,7 @@ public class Product implements Serializable {
 	private String shortDesc;
 	private String categoryName;
 	private String measuringUnit;
-	
+
 	private String longDesc;
 	private List<SupportURL> benifits;
 	private List<SupportURL> recipe;

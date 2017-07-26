@@ -6,6 +6,12 @@ import java.util.List;
 public class SourceFarmer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
+	private ImageDetail img;
+	private String name;
+	private String district;
+	private String phNo;
+	private String address;
+	private List<String> productList;
 
 	public String getId() {
 		return id;
@@ -15,19 +21,12 @@ public class SourceFarmer implements Serializable {
 		this.id = id;
 	}
 
-	private String imgURL;
-	private String name;
-	private String district;
-	private String phNo;
-	private String address;
-	private List<String> productList;
-
-	public String getImgURL() {
-		return imgURL;
+	public ImageDetail getImg() {
+		return img;
 	}
 
-	public void setImgURL(String imgURL) {
-		this.imgURL = imgURL;
+	public void setImg(ImageDetail img) {
+		this.img = img;
 	}
 
 	public String getName() {
