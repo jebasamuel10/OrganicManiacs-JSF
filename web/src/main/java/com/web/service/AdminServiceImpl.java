@@ -1,5 +1,9 @@
 package com.web.service;
 
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.web.model.Category;
 import com.web.model.Product;
 
@@ -24,13 +28,20 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void saveProduct(Product pro) {
-		System.out.println("completed");
-		
+		Gson gson = new Gson();
+		String inputString = gson.toJson(pro);
+		String result = ServiceUtil.callPostRESTservice("admin/addProduct", inputString);
+		System.out.println(result);
+		return  ;
 	}
 
 	@Override
 	public void addCategory(Category category) {
-		// TODO Auto-generated method stub
+		Gson gson = new Gson();
+		String inputString = gson.toJson(category);
+		String result = ServiceUtil.callPostRESTservice("admin/addCategory",inputString);
+		System.out.println(result);
+		return  ;
 		
 	}
 	

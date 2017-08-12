@@ -6,17 +6,16 @@ import java.util.List;
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
-	
+	private String categoryName;
+	private List<Product> productList;
+	private ImageDetail img;
+	private boolean searchResult;
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	private String categoryName;
-	private List<Product> productList;
-	private ImageDetail img;
-	private boolean searchResult;
 	public String getCategoryName() {
 		return categoryName;
 	}

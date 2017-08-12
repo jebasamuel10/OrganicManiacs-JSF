@@ -31,7 +31,7 @@
 					value="#{addProduct.pro.categoryName}" style="width:150px">
 					<f:selectItem itemLabel="Select Category" itemValue=""
 						noSelectionOption="true" />
-					<f:selectItems value="#{addProduct.proCategory}" />
+					<f:selectItems value="#{addProduct.proCategory}" var="pro" itemValue="#{pro.categoryName}" itemLabel="#{pro.categoryName}"/>
 				</p:selectOneMenu>
 				<br />
 				<h:outputText value="Product Images:"></h:outputText>

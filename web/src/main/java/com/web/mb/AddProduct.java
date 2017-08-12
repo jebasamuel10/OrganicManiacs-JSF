@@ -18,6 +18,7 @@ import com.web.model.ImageDetail;
 import com.web.model.Product;
 import com.web.model.SupportURL;
 import com.web.service.AdminServiceImpl;
+import com.web.service.ProductServiceImpl;
 
 @ManagedBean(name = "addProduct")
 @ViewScoped
@@ -63,7 +64,7 @@ public class AddProduct implements Serializable {
 	@PostConstruct
 	public void init() {
 		pro = new Product();
-		proCategory = new ArrayList<>();
+		proCategory = ProductServiceImpl.getObject().getCategoryList();
 
 	}
 

@@ -39,17 +39,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Category> getCategoryList() {
 		List<Category> categoryList = new ArrayList<>();
-		for(int i=0;i<10;i++){
-			ImageDetail id= new ImageDetail();
-			id.setImgLocation(""+i+".jpg");
-			Category cat= new Category();
-			cat.setCategoryName("Category Name"+i);
-			
-			cat.setImg(id);
-			
-			System.out.println("cat"+cat.getImg().getImgLocation());
-			categoryList.add(cat);
-		}
+		//http://localhost:8089/get/AllCategories
+		Gson gson = new Gson();
+		String result = ServiceUtil.callGetRESTservice("get/AllCategories");
+		categoryList = gson.fromJson(result, new TypeToken<List<Category>>(){}.getType());
 		return categoryList ;
 	}
 
@@ -77,39 +70,11 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> bestSellingItems= new ArrayList<>();
 		//get/AllProducts
 		Gson gson = new Gson();
-		String result = callRESTservice("get/AllProducts");
+		String result = ServiceUtil.callGetRESTservice("get/AllProducts");
 		bestSellingItems = gson.fromJson(result, new TypeToken<List<Product>>(){}.getType());
 		return bestSellingItems;
 	}
-	private String callRESTservice(String serviceName) {
-		try {
-			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-			String restURL = "http://localhost:8089/" + serviceName;
-			// StringEntity input = new StringEntity(inputString);
-			System.out.println(restURL);
-			HttpGet getRequest = new HttpGet(restURL);
-//			HttpPost postRequest = new HttpPost(restURL);
-//			postRequest.addHeader("content-type", "application/json");
-//			postRequest.addHeader("Accept", "application/json");
-			// postRequest.setEntity(input);
-			HttpResponse response = httpClient.execute(getRequest);
-
-			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
-			}
-
-			BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
-			String output;
-			StringBuilder result = new StringBuilder();
-			while ((output = br.readLine()) != null) {
-				result.append(output);
-			}
-			return result.toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	
 
 }

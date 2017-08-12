@@ -53,5 +53,10 @@ public class ImageDetail implements Serializable {
 	public void setAltText(String altText) {
 		this.altText = altText;
 	}
+	@Override
+	public String toString() {
+		return "ImageDetail [id=" + id + ", imgage=" + imgage + ", imgLocation=" + imgLocation + ", altText=" + altText
+				+ "]";
+	}
 	
 }

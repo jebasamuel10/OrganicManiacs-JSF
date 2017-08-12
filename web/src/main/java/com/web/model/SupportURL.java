@@ -33,5 +33,9 @@ public class SupportURL implements Serializable {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	@Override
+	public String toString() {
+		return "SupportURL [url=" + url + ", desc=" + desc + ", video=" + video + ", id=" + id + "]";
+	}
 	
 }

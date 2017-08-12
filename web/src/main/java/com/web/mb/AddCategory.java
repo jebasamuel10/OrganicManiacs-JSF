@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -52,7 +53,13 @@ public class AddCategory implements Serializable {
 	public void delProduct() {
 		category.getProductList().remove(selectedProduct);
 	}
-
+	public void addProduct(ActionEvent event) {
+		System.out.println("add getProductList");
+		if (null == category.getProductList())
+			category.setProductList(new ArrayList<>());
+		
+		category.getProductList().add(new Product());
+	}
 	public void handleFileUpload(FileUploadEvent event) {
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = uploadedFile.getFileName();

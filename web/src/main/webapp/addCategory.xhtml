@@ -10,48 +10,55 @@
 <h:head>
 </h:head>
 <h:body>
-	<ui:composition>
-		<h:form id="addCategoryForm" enctype="multipart/form-data">
-			<p:growl id="msgs" showDetail="true" />
-			<p:inputText id="categoryName" label="Category Name" required="true"
-				value="#{addCategory.category.categoryName}"></p:inputText>
-
-			<p:fileUpload fileUploadListener="#{addCategory.handleFileUpload}"
-				mode="simple" skinSimple="true"
-				sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
+	<ui:composition template="/common/layout.xhtml">
+		<ui:define name="content">
+			<h:form id="addCategoryForm" enctype="multipart/form-data">
+				<p:growl id="msgs" showDetail="true" />
+				<h:outputText value="Category Name:"></h:outputText>
+				<p:inputText id="categoryName" label="Category Name" required="true"
+					value="#{addCategory.category.categoryName}"></p:inputText>
+				<br />
+				<h:outputText value="Category Images"></h:outputText>
+				<p:fileUpload fileUploadListener="#{addCategory.handleFileUpload}"
+					mode="simple" skinSimple="true" sizeLimit="100000"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+				<br />
 				<p:graphicImage value="#{addCategory.category.img.img}"
 					alt="Image Description for #{addCategory.category.img.altText}"
 					title="#{addCategory.category.img.altText}">
 					<f:param name="imageId" value="#{addCategory.category.img.id}" />
 				</p:graphicImage>
+				<br />
+				<h:outputText value="Category Products"></h:outputText>
+				<p:dataTable id="products" var="products"
+					value="#{addCategory.category.productList}" editable="true"
+					style="margin-bottom:20px" selectionMode="single"
+					selection="#{addCategory.selectedProduct}">
+					<p:column headerText="Product Name">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{products.productName}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{products.productName}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column>
+						<p:rowEditor />
+					</p:column>
+				</p:dataTable>
+				<p:contextMenu for="products">
+					<p:menuitem value="Add" icon="ui-icon-plus" update="products"
+						actionListener="#{addCategory.addProduct}" />
+					<p:menuitem value="Delete" icon="ui-icon-delete" update="products"
+						actionListener="#{addCategory.delProduct}" />
+				</p:contextMenu>
 
-			<p:dataTable id="products" var="products"
-				value="#{addCategory.category.productList}" editable="true"
-				style="margin-bottom:20px" selectionMode="single"
-				selection="#{addCategory.selectedProduct}">
-				<p:column headerText="Product Name">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{products.productName}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText  value="#{products.productName}"
-								style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:rowEditor />
-				</p:column>
-			</p:dataTable>
-			<p:contextMenu for="products">
-				<p:menuitem value="Delete" icon="ui-icon-delete" update="benifits"
-					actionListener="#{addCategory.delProduct}" />
-			</p:contextMenu>
-
-			<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
-				actionListener="#{addCategory.saveCategory}" />
-		</h:form>
+				<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
+					actionListener="#{addCategory.saveCategory}" />
+			</h:form>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>
