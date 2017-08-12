@@ -4,133 +4,149 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 </h:head>
 <h:body>
-	<ui:composition>
-		<h:form id="addProductForm" enctype="multipart/form-data">
-			<p:growl id="msgs" showDetail="true" />
-			<p:inputText id="productName" label="Product Name" required="true"
-				value="#{addProduct.pro.productName}"></p:inputText>
-			<p:inputText label="Product Desc" required="true"
-				value="#{addProduct.pro.shortDesc}"></p:inputText>
-			<p:inputTextarea rows="6" cols="33" autoResize="true"
-				value="#{addProduct.pro.longDesc}" />
-			<p:selectOneMenu id="category" label="Product Category"
-				value="#{addProduct.pro.categoryName}" style="width:150px">
-				<f:selectItem itemLabel="Select Category" itemValue=""
-					noSelectionOption="true" />
-				<f:selectItems value="#{addProduct.proCategory}" />
-			</p:selectOneMenu>
-			<p:fileUpload fileUploadListener="#{addProduct.handleFileUpload}"
-				mode="advanced" dragDropSupport="true" update="messages"
-				sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
-			<p:galleria value="#{addProduct.pro.imgList}" var="image"
-				panelWidth="500" panelHeight="313" showCaption="true">
-				<p:graphicImage value="#{image.img}"
-					alt="Image Description for #{image.altText}"
-					title="#{image.altText}">
-					<f:param name="imageId" value="#{image.id}" />
-				</p:graphicImage>
-			</p:galleria>
-
-			<p:dataTable id="benifits" var="benifit"
-				value="#{addProduct.pro.benifits}" editable="true"
-				style="margin-bottom:20px" selectionMode="single"
-				selection="#{addProduct.selectedURL}">
-				<p:column headerText="URL">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{benifit.url}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="modelInput" value="#{benifit.url}"
-								style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:column headerText="Description">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{benifit.desc}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{benifit.desc}" style="width:100%"
-								label="Desc" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:column headerText="Video?">
-					<p:cellEditor>
-						<f:facet name="output">
-							<p:selectBooleanButton id="value" value="#{benifit.video}"
-								onLabel="Yes" offLabel="No" style="width:60px" />
-						</f:facet>
-						<f:facet name="input">
-							<p:selectBooleanButton id="value1" value="#{benifit.video}"
-								onLabel="Yes" offLabel="No" style="width:60px" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:rowEditor />
-				</p:column>
-			</p:dataTable>
-			<p:contextMenu for="benifits">
-				<p:menuitem value="Delete" icon="ui-icon-delete" update="benifits"
-					actionListener="#{addProduct.delBenifits}" />
-			</p:contextMenu>
-			<p:dataTable id="recipe" var="recipe"
-				value="#{addProduct.pro.recipe}" editable="true"
-				style="margin-bottom:20px" selectionMode="single"
-				selection="#{addProduct.selectedURL}">
-				<p:column headerText="URL">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{recipe.url}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{recipe.url}" style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:column headerText="Description">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{recipe.desc}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{recipe.desc}" style="width:100%"
-								label="Desc" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:column headerText="Video?">
-					<p:cellEditor>
-						<f:facet name="output">
-							<p:selectBooleanButton value="#{recipe.video}" onLabel="Yes"
-								offLabel="No" style="width:60px" />
-						</f:facet>
-						<f:facet name="input">
-							<p:selectBooleanButton value="#{recipe.video}" onLabel="Yes"
-								offLabel="No" style="width:60px" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				<p:rowEditor />
-				</p:column>
-			</p:dataTable>
-			<p:contextMenu for="recipe">
-				<p:menuitem value="Delete" icon="ui-icon-delete" update="recipe"
-					actionListener="#{addProduct.delRecipe}" />
-			</p:contextMenu>
-
-			<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
-				actionListener="#{addProduct.saveProduct}" />
-		</h:form>
+	<ui:composition template="/common/layout.xhtml">
+		<ui:define name="content">
+			<h:form id="addProductForm" enctype="multipart/form-data">
+				<p:growl id="msgs" showDetail="true" />
+				<h:outputText value="Product Name:"></h:outputText>
+				<p:inputText id="productName" required="true"
+					value="#{addProduct.pro.productName}"></p:inputText>
+				<br />
+				<h:outputText value="Product Desc:"></h:outputText>
+				<p:inputText label="Product Desc" required="true"
+					value="#{addProduct.pro.shortDesc}"></p:inputText>
+				<br />
+				<h:outputText value="Product Long Desc:"></h:outputText>
+				<p:inputTextarea rows="6" cols="33" autoResize="true"
+					value="#{addProduct.pro.longDesc}" />
+				<br />
+				<h:outputText value="Product Category:"></h:outputText>
+				<p:selectOneMenu id="category" label="Product Category"
+					value="#{addProduct.pro.categoryName}" style="width:150px">
+					<f:selectItem itemLabel="Select Category" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{addProduct.proCategory}" />
+				</p:selectOneMenu>
+				<br />
+				<h:outputText value="Product Images:"></h:outputText>
+				<p:fileUpload fileUploadListener="#{addProduct.handleFileUpload}"
+					mode="advanced" dragDropSupport="true" update="msgs"
+					sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+				<br />
+				<p:galleria value="#{addProduct.pro.imgList}" var="image"
+					panelWidth="500" panelHeight="313" showCaption="true">
+					<p:graphicImage value="#{image.img}"
+						alt="Image Description for #{image.altText}"
+						title="#{image.altText}">
+						<f:param name="imageId" value="#{image.id}" />
+					</p:graphicImage>
+				</p:galleria>
+				<br />
+				<h:outputText value="Product Benifits:"></h:outputText>
+				<p:dataTable id="benifits" var="benifit"
+					value="#{addProduct.pro.benifits}" editable="true"  rowIndexVar="#{benifit.id}"
+					style="margin-bottom:20px" selectionMode="single"
+					selection="#{addProduct.selectedURL}">
+					<p:column headerText="URL">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{benifit.url}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput" value="#{benifit.url}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Description">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{benifit.desc}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{benifit.desc}" style="width:100%"
+									label="Desc" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Video?">
+						<p:cellEditor>
+							<f:facet name="output">
+								<p:selectBooleanButton id="value" value="#{benifit.video}"
+									onLabel="Yes" offLabel="No" style="width:60px" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectBooleanButton id="value1" value="#{benifit.video}"
+									onLabel="Yes" offLabel="No" style="width:60px" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:rowEditor />
+				</p:dataTable>
+				<p:contextMenu for="benifits">
+					<p:menuitem value="Add" icon="ui-icon-Add" update="benifits"
+						actionListener="#{addProduct.addBenifits}" />
+					<p:menuitem value="Delete" icon="ui-icon-delete" update="benifits"
+						actionListener="#{addProduct.delBenifits}" />
+				</p:contextMenu>
+				<br />
+				<h:outputText value="Product Recipe:"></h:outputText>
+				<p:dataTable id="recipe" var="recipe"
+					value="#{addProduct.pro.recipe}" editable="true" rowIndexVar="#{recipe.id}"
+					style="margin-bottom:20px" selectionMode="single"
+					selection="#{addProduct.selectedURL}">
+					<p:column headerText="URL">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{recipe.url}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{recipe.url}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Description">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{recipe.desc}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{recipe.desc}" style="width:100%"
+									label="Desc" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Video?">
+						<p:cellEditor>
+							<f:facet name="output">
+								<p:selectBooleanButton value="#{recipe.video}" onLabel="Yes"
+									offLabel="No" style="width:60px" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectBooleanButton value="#{recipe.video}" onLabel="Yes"
+									offLabel="No" style="width:60px" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:rowEditor />
+				</p:dataTable>
+				<p:contextMenu for="recipe">
+					<p:menuitem value="Add" icon="ui-icon-Add" update="recipe"
+					 	actionListener="#{addProduct.addRecipe}" />
+					<p:menuitem value="Delete" icon="ui-icon-delete" update="recipe"
+						actionListener="#{addProduct.delRecipe}" />
+				</p:contextMenu>
+				<br />
+				<p:commandButton value="Save" icon="ui-icon-check" update="msgs"
+					actionListener="#{addProduct.saveProduct}" />
+			</h:form>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>

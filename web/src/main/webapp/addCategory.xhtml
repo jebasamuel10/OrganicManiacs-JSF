@@ -20,10 +20,10 @@
 				mode="simple" skinSimple="true"
 				sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
-				<p:graphicImage value="#{image.img}"
-					alt="Image Description for #{image.altText}"
-					title="#{image.altText}">
-					<f:param name="imageId" value="#{image.id}" />
+				<p:graphicImage value="#{addCategory.category.img.img}"
+					alt="Image Description for #{addCategory.category.img.altText}"
+					title="#{addCategory.category.img.altText}">
+					<f:param name="imageId" value="#{addCategory.category.img.id}" />
 				</p:graphicImage>
 
 			<p:dataTable id="products" var="products"

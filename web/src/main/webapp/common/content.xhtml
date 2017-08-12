@@ -16,8 +16,8 @@
 				<c:forEach items="#{home.carouselList}" var="ci">
 					<b:carouselItem caption="#{ci.caption}">
 					<p:graphicImage value="#{ci.imageDetail.img}"
-							alt="Image Description for #{ci.defaultImage..altText}"
-							title="#{ci.defaultImage..altText}" width="800px" height="400px" />
+							alt="Image Description for #{ci.imageDetail.altText}"
+							title="#{ci.imageDetail.altText}" width="800px" height="400px" />
 					</b:carouselItem>
 				</c:forEach>
 			</b:carousel>
@@ -31,14 +31,12 @@
 					layout="grid" styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
 						<p:graphicImage value="#{bs.defaultImage.img}"
-							alt="Image Description for #{bs.defaultImage..altText}"
-							title="#{bs.defaultImage..altText}" width="100px" height="100px" />
+							alt="Image Description for #{bs.defaultImage.altText}"
+							title="#{bs.defaultImage.altText}" width="100px" height="100px" />
 					</f:facet>
 					<h:outputText value="#{bs.productName}" />
 					<h:outputText value="#{bs.shortDesc}" />
-					<h:outputText value="#{bs.scale}-" />
 					<h:outputText value="#{bs.measuringUnit}" />
-					<h:outputText value="#{bs.mrp} Rs" />
 
 				</p:panelGrid>
 			</p:carousel>
