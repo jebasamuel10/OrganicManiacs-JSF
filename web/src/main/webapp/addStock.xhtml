@@ -50,13 +50,9 @@
 				<p:calendar value="#{addStock.proStock.receivedDate}"
 					label="Received Date" />
 				<br />
-				<h:outputText value="Product scale:"></h:outputText>
-				<p:selectOneMenu id="scale" label="Scale"
-					value="#{addStock.proStock.scale}" style="width:150px">
-					<f:selectItem itemLabel="Select Scale" itemValue=""
-						noSelectionOption="true" />
-					<f:selectItems value="#{addStock.proStock.scaleLst}"  var="pro" itemValue="#{pro}" itemLabel="#{pro}"/>
-				</p:selectOneMenu>
+				<h:outputText value="Product Count:"></h:outputText>
+				<p:inputNumber id="cnt" label="Count" value="#{addStock.proStock.nos}">
+				</p:inputNumber>
 				<br />
 				<h:outputText value="Product Units:"></h:outputText>
 				<p:outputLabel value="#{addStock.proStock.measuringUnit}"></p:outputLabel>

@@ -18,7 +18,15 @@ public class Stock implements Serializable {
 	private Date receivedDate;
 	private Date expireDate;
 	private String scale;
+	private int nos;
 	
+	
+	public int getNos() {
+		return nos;
+	}
+	public void setNos(int nos) {
+		this.nos = nos;
+	}
 	public String getScale() {
 		return scale;
 	}
