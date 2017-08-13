@@ -26,16 +26,6 @@ public class Product implements Serializable {
 		this.id = id;
 	}
 
-	private List<String> measuringUnitLst = Arrays.asList(new String("Gram/KG"), new String("ltr"), new String("Nos"));
-
-	public List<String> getMeasuringUnitLst() {
-		return measuringUnitLst;
-	}
-
-	public void setMeasuringUnitLst(List<String> measuringUnitLst) {
-		this.measuringUnitLst = measuringUnitLst;
-	}
-
 	public List<ImageDetail> getImgList() {
 		return imgList;
 	}

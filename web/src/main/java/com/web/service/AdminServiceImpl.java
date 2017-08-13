@@ -1,12 +1,10 @@
 package com.web.service;
 
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.web.model.Category;
 import com.web.model.Product;
 import com.web.model.SourceFrom;
+import com.web.model.Stock;
 
 public class AdminServiceImpl implements AdminService {
 	private AdminServiceImpl() {
@@ -33,28 +31,38 @@ public class AdminServiceImpl implements AdminService {
 		String inputString = gson.toJson(pro);
 		String result = ServiceUtil.callPostRESTservice("admin/addProduct", inputString);
 		System.out.println(result);
-		return  ;
+		return;
 	}
 
 	@Override
 	public void addCategory(Category category) {
 		Gson gson = new Gson();
 		String inputString = gson.toJson(category);
-		String result = ServiceUtil.callPostRESTservice("admin/addCategory",inputString);
+		String result = ServiceUtil.callPostRESTservice("admin/addCategory", inputString);
 		System.out.println(result);
-		return  ;
-		
+		return;
+
 	}
 
 	@Override
 	public void saveFarmer(SourceFrom source) {
 		Gson gson = new Gson();
 		String inputString = gson.toJson(source);
-		String result = ServiceUtil.callPostRESTservice("admin/addFarmer",inputString);
+		String result = ServiceUtil.callPostRESTservice("admin/addSrcFrom", inputString);
 		System.out.println(result);
-		return  ;
-		
+		return;
+
 	}
-	
+
+	@Override
+	public void addStock(Stock stock) {
+		Gson gson = new Gson();
+		String inputString = gson.toJson(stock);
+		String result = ServiceUtil.callPostRESTservice("admin/addStock", inputString);
+		System.out.println(result);
+
+		return;
+
+	}
 
 }

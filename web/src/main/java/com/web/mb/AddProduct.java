@@ -2,6 +2,7 @@ package com.web.mb;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -28,7 +29,15 @@ public class AddProduct implements Serializable {
 	private SupportURL selectedURL;
 	private SupportURL selectedBenifit;
 	private List<Category> proCategory;
+	private List<String> measuringUnitLst = Arrays.asList(new String("Gram/KG"), new String("ltr"), new String("Nos"));
 
+	public List<String> getMeasuringUnitLst() {
+		return measuringUnitLst;
+	}
+
+	public void setMeasuringUnitLst(List<String> measuringUnitLst) {
+		this.measuringUnitLst = measuringUnitLst;
+	}
 	public SupportURL getSelectedURL() {
 		return selectedURL;
 	}

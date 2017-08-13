@@ -16,7 +16,7 @@
 				<p:growl id="msgs" showDetail="true" />
 				<h:outputText value="Product Category:"></h:outputText>
 				<p:selectOneMenu id="category" label="Product Category"
-					value="#{addStock.selectedCategory}" style="width:150px">
+					value="#{addStock.proStock.pro.categoryName}" style="width:150px">
 					<f:selectItem itemLabel="Select Category" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{addStock.categoryList}" />
@@ -27,31 +27,31 @@
 					value="#{addStock.proStock.scale}" style="width:150px">
 					<f:selectItem itemLabel="Select Untis" itemValue=""
 						noSelectionOption="true" />
-					<f:selectItems value="#{addStock.proStock.scaleLst}" />
+					<f:selectItems value="#{addStock.scaleLst}" />
 				</p:selectOneMenu>
 				<br />
 				<h:outputText value="Product Name:"></h:outputText>
 				<p:selectOneMenu id="product" label="Product Name"
-					value="#{addStock.selectedProduct}" style="width:150px">
+					value="#{addStock.proStock.pro.productName}" style="width:150px">
 					<f:selectItem itemLabel="Select Product" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{addStock.productList}" />
 				</p:selectOneMenu>
 				<br />
 				<h:outputText value="Product packed Date:"></h:outputText>
-				<p:calendar value="#{addStock.proStock.packedDate}"
+				<p:calendar value="#{addStock.packedDate}"
 					label="Packed Date" />
 				<br />
 				<h:outputText value="Product Exp Date:"></h:outputText>
-				<p:calendar value="#{addStock.proStock.expireDate}"
+				<p:calendar value="#{addStock.expireDate}"
 					label="Expire Date" />
 				<br />
 				<h:outputText value="Product received Date:"></h:outputText>
-				<p:calendar value="#{addStock.proStock.receivedDate}"
+				<p:calendar value="#{addStock.receivedDate}"
 					label="Received Date" />
 				<br />
 				<h:outputText value="Product Count:"></h:outputText>
-				<p:inputNumber id="cnt" label="Count" value="#{addStock.proStock.nos}" decimalPlaces="0">
+				<p:inputNumber id="cnt" label="Count" value="#{addStock.proStock.counter}" decimalPlaces="0">
 				</p:inputNumber>
 				<br />
 				<h:outputText value="Product Units:"></h:outputText>

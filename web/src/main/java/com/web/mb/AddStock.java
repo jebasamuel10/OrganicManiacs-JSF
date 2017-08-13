@@ -1,7 +1,10 @@
 package com.web.mb;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -23,7 +26,37 @@ public class AddStock implements Serializable {
 	private List<String> productList;
 	private Product selectedProduct;
 	private Stock proStock;
-	
+	private Date packedDate;
+	private Date receivedDate;
+	private Date expireDate;
+	private List<String> scaleLst = Arrays.asList(new String("1"), new String("2"), new String("5"), new String("10"),
+			new String("50"), new String("100"), new String("200"), new String("250"), new String("500"),
+			new String("750"));
+	private static SimpleDateFormat sfd = new SimpleDateFormat("yyyy-MM-dd"); 
+	public Date getPackedDate() {
+		return packedDate;
+	}
+	public void setPackedDate(Date packedDate) {
+		this.packedDate = packedDate;
+	}
+	public Date getReceivedDate() {
+		return receivedDate;
+	}
+	public void setReceivedDate(Date receivedDate) {
+		this.receivedDate = receivedDate;
+	}
+	public Date getExpireDate() {
+		return expireDate;
+	}
+	public void setExpireDate(Date expireDate) {
+		this.expireDate = expireDate;
+	}
+	public List<String> getScaleLst() {
+		return scaleLst;
+	}
+	public void setScaleLst(List<String> scaleLst) {
+		this.scaleLst = scaleLst;
+	}
 	public List<String> getCategoryList() {
 		return categoryList;
 	}
@@ -57,10 +90,20 @@ public class AddStock implements Serializable {
 	@PostConstruct
 	public void init(){
 		proStock = new Stock();
-		categoryList = new ArrayList<>();//ProductServiceImpl.getObject().getCategoryList();
-		productList = new ArrayList<>();//ProductServiceImpl.getObject().getProductList("All");
+		proStock.setPro(new Product());
+		categoryList = ProductServiceImpl.getObject().getCategoryName();
+		productList = ProductServiceImpl.getObject().getProductName();
 	}
 	public void saveStockProduct(){
-		//AdminServiceImpl.getObject().saveFarmer(source);
+		Date d = getExpireDate();
+		System.out.println(d);
+		proStock.setExpireDate((sfd.format(d)));
+		System.out.println(sfd.format(d));
+		System.out.println(proStock.getExpireDate());
+		d = getPackedDate();
+		proStock.setPackedDate(sfd.format(d));
+		d = getReceivedDate();
+		proStock.setReceivedDate((sfd.format(d)));
+		AdminServiceImpl.getObject().addStock(proStock);
 	}
 }

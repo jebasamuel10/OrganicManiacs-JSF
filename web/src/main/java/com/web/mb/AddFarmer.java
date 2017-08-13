@@ -24,13 +24,13 @@ import com.web.service.AdminServiceImpl;
 public class AddFarmer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private SourceFrom farmer;
-	private Product selectedProduct;
+	private String selectedProduct;
 
-	public Product getSelectedProduct() {
+	public String getSelectedProduct() {
 		return selectedProduct;
 	}
 
-	public void setSelectedProduct(Product selectedProduct) {
+	public void setSelectedProduct(String selectedProduct) {
 		this.selectedProduct = selectedProduct;
 	}
 
@@ -70,6 +70,6 @@ public class AddFarmer implements Serializable {
 		System.out.println(farmer.getProductList().size());
 	}
 	public void saveFarmer() {
-		// save
+		AdminServiceImpl.getObject().saveFarmer(farmer);
 	}
 }

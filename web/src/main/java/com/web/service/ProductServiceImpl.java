@@ -78,4 +78,26 @@ public class ProductServiceImpl implements ProductService {
 		return bestSellingItems;
 	}
 
+	@Override
+	public List<String> getCategoryName() {
+		List<String> categoryNames = new ArrayList<>();
+		// get/AllProducts
+		Gson gson = new Gson();
+		String result = ServiceUtil.callGetRESTservice("get/AllCategoryNames");
+		categoryNames = gson.fromJson(result, new TypeToken<List<String>>() {
+		}.getType());
+		return categoryNames;
+	}
+
+	@Override
+	public List<String> getProductName() {
+		List<String> productNames = new ArrayList<>();
+		// get/AllProducts
+		Gson gson = new Gson();
+		String result = ServiceUtil.callGetRESTservice("get/AllProductName");
+		productNames = gson.fromJson(result, new TypeToken<List<String>>() {
+		}.getType());
+		return productNames;
+	}
+
 }

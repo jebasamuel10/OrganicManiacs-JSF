@@ -42,6 +42,7 @@ public class ServiceUtil {
 			String restURL = "http://localhost:8089/" + serviceName;
 			StringEntity input = new StringEntity(inputString);
 			System.out.println(restURL);
+			System.out.println(inputString);
 			HttpPost postRequest = new HttpPost(restURL);
 			postRequest.addHeader("content-type", "application/json");
 			postRequest.addHeader("Accept", "application/json");
