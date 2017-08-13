@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -60,7 +61,14 @@ public class AddFarmer implements Serializable {
 	public void delProduct() {
 		farmer.getProductList().remove(selectedProduct);
 	}
-
+	public void addProduct(ActionEvent event) {
+		System.out.println("add addProduct");
+		if (null == farmer.getProductList())
+			farmer.setProductList(new ArrayList<>());
+		System.out.println(farmer.getProductList().size());
+		farmer.getProductList().add("a");
+		System.out.println(farmer.getProductList().size());
+	}
 	public void saveFarmer() {
 		// save
 	}

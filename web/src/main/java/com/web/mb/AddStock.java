@@ -11,6 +11,8 @@ import javax.faces.bean.ViewScoped;
 import com.web.model.Category;
 import com.web.model.Product;
 import com.web.model.Stock;
+import com.web.service.AdminServiceImpl;
+import com.web.service.ProductServiceImpl;
 
 @ManagedBean(name = "addStock")
 @ViewScoped
@@ -54,10 +56,10 @@ public class AddStock implements Serializable {
 	}
 	@PostConstruct
 	public void init(){
-		categoryList = new ArrayList<>();
-		productList = new ArrayList<>();
+		categoryList = new ArrayList<>();//ProductServiceImpl.getObject().getCategoryList();
+		productList = new ArrayList<>();//ProductServiceImpl.getObject().getProductList("All");
 	}
 	public void saveStockProduct(){
-		//AdminServiceImpl.getObject().saveProduct(pro);
+		//AdminServiceImpl.getObject().saveFarmer(source);
 	}
 }

@@ -10,7 +10,8 @@
 <h:head>
 </h:head>
 <h:body>
-	<ui:composition>
+	<ui:composition template="/common/layout.xhtml">
+		<ui:define name="content">
 		<h:form id="addStockForm">
 			<p:growl id="msgs" showDetail="true" />
 			<p:selectOneMenu id="category" label="Product Category"
@@ -49,6 +50,7 @@
 				actionListener="#{addStock.saveStockProduct}" />
 
 		</h:form>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>

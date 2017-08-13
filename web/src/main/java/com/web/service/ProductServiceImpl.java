@@ -39,11 +39,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Category> getCategoryList() {
 		List<Category> categoryList = new ArrayList<>();
-		//http://localhost:8089/get/AllCategories
+		// http://localhost:8089/get/AllCategories
 		Gson gson = new Gson();
 		String result = ServiceUtil.callGetRESTservice("get/AllCategories");
-		categoryList = gson.fromJson(result, new TypeToken<List<Category>>(){}.getType());
-		return categoryList ;
+		categoryList = gson.fromJson(result, new TypeToken<List<Category>>() {
+		}.getType());
+		return categoryList;
 	}
 
 	@Override
@@ -51,14 +52,15 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public List<CarouselItem> getCarouselList() {
-		List<CarouselItem> carouselList= new ArrayList<>();
-		for(int i=0;i<6;i++){
-			CarouselItem ci= new CarouselItem();
-			ci.setCaption("Caption :"+i);
-			ci.setHeader("Header :"+i);
-			ci.setImageLocation(""+i+".jpg");
+		List<CarouselItem> carouselList = new ArrayList<>();
+		for (int i = 0; i < 6; i++) {
+			CarouselItem ci = new CarouselItem();
+			ci.setCaption("Caption :" + i);
+			ci.setHeader("Header :" + i);
+			ci.setImageLocation("" + i + ".jpg");
 			carouselList.add(ci);
 			System.out.println(ci.getImageLocation());
 		}
@@ -67,14 +69,13 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> getBestSellers() {
-		List<Product> bestSellingItems= new ArrayList<>();
-		//get/AllProducts
+		List<Product> bestSellingItems = new ArrayList<>();
+		// get/AllProducts
 		Gson gson = new Gson();
 		String result = ServiceUtil.callGetRESTservice("get/AllProducts");
-		bestSellingItems = gson.fromJson(result, new TypeToken<List<Product>>(){}.getType());
+		bestSellingItems = gson.fromJson(result, new TypeToken<List<Product>>() {
+		}.getType());
 		return bestSellingItems;
 	}
-	
-	
 
 }
