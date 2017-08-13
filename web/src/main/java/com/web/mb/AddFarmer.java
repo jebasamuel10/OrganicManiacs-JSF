@@ -15,7 +15,7 @@ import org.primefaces.model.UploadedFile;
 import com.web.model.Category;
 import com.web.model.ImageDetail;
 import com.web.model.Product;
-import com.web.model.SourceFarmer;
+import com.web.model.SourceFrom;
 import com.web.model.SupportURL;
 import com.web.service.AdminServiceImpl;
 
@@ -23,7 +23,7 @@ import com.web.service.AdminServiceImpl;
 @ViewScoped
 public class AddFarmer implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private SourceFarmer farmer;
+	private SourceFrom farmer;
 	private Product selectedProduct;
 
 	public Product getSelectedProduct() {
@@ -34,17 +34,17 @@ public class AddFarmer implements Serializable {
 		this.selectedProduct = selectedProduct;
 	}
 
-	public SourceFarmer getFarmer() {
+	public SourceFrom getFarmer() {
 		return farmer;
 	}
 
-	public void setFarmer(SourceFarmer farmer) {
+	public void setFarmer(SourceFrom farmer) {
 		this.farmer = farmer;
 	}
 
 	@PostConstruct
 	public void init() {
-		farmer = new SourceFarmer();
+		farmer = new SourceFrom();
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {

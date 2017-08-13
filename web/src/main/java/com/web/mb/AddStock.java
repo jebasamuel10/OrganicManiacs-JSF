@@ -56,6 +56,7 @@ public class AddStock implements Serializable {
 	}
 	@PostConstruct
 	public void init(){
+		proStock = new Stock();
 		categoryList = new ArrayList<>();//ProductServiceImpl.getObject().getCategoryList();
 		productList = new ArrayList<>();//ProductServiceImpl.getObject().getProductList("All");
 	}

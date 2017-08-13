@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.web.model.Category;
 import com.web.model.Product;
-import com.web.model.SourceFarmer;
+import com.web.model.SourceFrom;
 
 public class AdminServiceImpl implements AdminService {
 	private AdminServiceImpl() {
@@ -47,7 +47,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void saveFarmer(SourceFarmer source) {
+	public void saveFarmer(SourceFrom source) {
 		Gson gson = new Gson();
 		String inputString = gson.toJson(source);
 		String result = ServiceUtil.callPostRESTservice("admin/addFarmer",inputString);

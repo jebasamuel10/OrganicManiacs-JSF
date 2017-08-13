@@ -17,12 +17,12 @@ public class Stock implements Serializable {
 	private Date packedDate;
 	private Date receivedDate;
 	private Date expireDate;
-	private int scale;
+	private String scale;
 	
-	public int getScale() {
+	public String getScale() {
 		return scale;
 	}
-	public void setScale(int scale) {
+	public void setScale(String scale) {
 		this.scale = scale;
 	}
 	public String getProductId() {
