@@ -99,5 +99,15 @@ public class ProductServiceImpl implements ProductService {
 		}.getType());
 		return productNames;
 	}
-
+	@Override
+	public List<String> getProductName(String categoryName) {
+		List<String> productNames = new ArrayList<>();
+		// get/AllProducts
+		Gson gson = new Gson();
+		String inputString = gson.toJson(categoryName);
+		String result = ServiceUtil.callPostRESTservice("get/AllProductName", inputString);
+		productNames = gson.fromJson(result, new TypeToken<List<String>>() {
+		}.getType());
+		return productNames;
+	}
 }

@@ -13,4 +13,5 @@ public interface ProductService {
 	public List<String> getProductName();
 	public List<Product> getBestSellers();
 	public List<Product> getProductList(String category);
+	public List<String> getProductName(String categoryName) ;
 }

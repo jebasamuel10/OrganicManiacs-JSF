@@ -2,6 +2,7 @@ package com.web.mb;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -98,7 +99,7 @@ public class AddStock implements Serializable {
 		proStock = new Stock();
 		//proStock.setPro(new Product());
 		categoryList = ProductServiceImpl.getObject().getCategoryName();
-		productList = ProductServiceImpl.getObject().getProductName();
+		//productList = ProductServiceImpl.getObject().getProductName();
 	}
 	public void saveStockProduct(){
 		Date d = getExpireDate();
@@ -112,4 +113,10 @@ public class AddStock implements Serializable {
 		proStock.setReceivedDate((sfd.format(d)));
 		AdminServiceImpl.getObject().addStock(proStock,counter);
 	}
+	 public void onCategoryChange() {
+	        if(proStock.getCategoryName() !=null && !proStock.getCategoryName().equals(""))
+	        	productList = ProductServiceImpl.getObject().getProductName(proStock.getCategoryName());
+	        else
+	        	productList = new ArrayList<>();
+	    }
 }
