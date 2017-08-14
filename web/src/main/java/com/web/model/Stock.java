@@ -5,31 +5,30 @@ import java.io.Serializable;
 public class Stock implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String ProductId;
-	private Product pro;
+	private String productName;
+	private String categoryName;
 	private String measuringUnit;
-	
 	private double mrp;
 	private double ourPrice;
 	private String packedDate;
 	private String receivedDate;
 	private String expireDate;
 	private String scale;
-	private int counter;
 	
 	
-	public int getCounter() {
-		return counter;
+
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setCounter(int counter) {
-		this.counter = counter;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
-	public Product getPro() {
-		return pro;
+	public String getProductName() {
+		return productName;
 	}
-	public void setPro(Product pro) {
-		this.pro = pro;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	
 	public String getScale() {
 		return scale;
 	}

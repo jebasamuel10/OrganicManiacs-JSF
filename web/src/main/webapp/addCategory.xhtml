@@ -17,6 +17,8 @@
 				<h:outputText value="Category Name:"></h:outputText>
 				<p:inputText id="categoryName" label="Category Name" required="true"
 					value="#{addCategory.category.categoryName}"></p:inputText>
+					<p:commandButton value="Get"  update="addCategoryForm"
+					actionListener="#{addCategory.editCategoryDtl}" />
 				<br />
 				<h:outputText value="Category Images"></h:outputText>
 				<p:fileUpload fileUploadListener="#{addCategory.handleFileUpload}"
@@ -57,6 +59,8 @@
 
 				<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
 					actionListener="#{addCategory.saveCategory}" />
+					<p:commandButton value="Delete"  update="msgs"
+					actionListener="#{addCategory.delCategory}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

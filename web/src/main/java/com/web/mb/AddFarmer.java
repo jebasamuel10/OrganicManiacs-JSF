@@ -72,4 +72,12 @@ public class AddFarmer implements Serializable {
 	public void saveFarmer() {
 		AdminServiceImpl.getObject().saveFarmer(farmer);
 	}
+	public void editFarmer() {
+		if(null!= farmer.getName())
+			farmer= AdminServiceImpl.getObject().editFarmer(farmer.getName());
+	}
+	public void delFarmer() {
+		if(null!= farmer.getName())
+			AdminServiceImpl.getObject().delFarmer(farmer.getName());
+	}
 }

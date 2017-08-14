@@ -16,7 +16,7 @@
 				<p:growl id="msgs" showDetail="true" />
 				<h:outputText value="Product Category:"></h:outputText>
 				<p:selectOneMenu id="category" label="Product Category"
-					value="#{addStock.proStock.pro.categoryName}" style="width:150px">
+					value="#{addStock.proStock.categoryName}" style="width:150px">
 					<f:selectItem itemLabel="Select Category" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{addStock.categoryList}" />
@@ -32,7 +32,7 @@
 				<br />
 				<h:outputText value="Product Name:"></h:outputText>
 				<p:selectOneMenu id="product" label="Product Name"
-					value="#{addStock.proStock.pro.productName}" style="width:150px">
+					value="#{addStock.proStock.productName}" style="width:150px">
 					<f:selectItem itemLabel="Select Product" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{addStock.productList}" />
@@ -51,7 +51,7 @@
 					label="Received Date" />
 				<br />
 				<h:outputText value="Product Count:"></h:outputText>
-				<p:inputNumber id="cnt" label="Count" value="#{addStock.proStock.counter}" decimalPlaces="0">
+				<p:inputNumber id="cnt" label="Count" value="#{addStock.counter}" decimalPlaces="0">
 				</p:inputNumber>
 				<br />
 				<h:outputText value="Product Units:"></h:outputText>

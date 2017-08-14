@@ -17,14 +17,21 @@
 				<h:outputText value="Farmer Name"></h:outputText>
 				<p:inputText id="farmerName" label="Farmer Name" required="true"
 					value="#{addFarmer.farmer.name}"></p:inputText>
+				<p:commandButton value="Get" update="addFarmerForm"
+					actionListener="#{addFarmer.editFarmer}" />
+				<br />
 				<h:outputText value="Farmer district"></h:outputText>
 				<p:inputText label="Farmer district" required="true"
 					value="#{addFarmer.farmer.district}"></p:inputText>
+				<br />
 				<h:outputText value="Farmer address"></h:outputText>
 				<p:inputTextarea rows="6" cols="33" label="Address"
 					autoResize="true" value="#{addFarmer.farmer.address}" />
+				<br />
+				<h:outputText value="Farmer ph no"></h:outputText>
 				<p:inputText label="Farmer Ph No" required="true"
 					value="#{addFarmer.farmer.phNo}"></p:inputText>
+				<br />
 				<h:outputText value="Farmer photo"></h:outputText>
 				<p:fileUpload fileUploadListener="#{addFarmer.handleFileUpload}"
 					mode="simple" skinSimple="true" sizeLimit="100000"
@@ -35,6 +42,7 @@
 					title="#{addFarmer.farmer.img.altText}">
 					<f:param name="imageId" value="#{addFarmer.farmer.img.id}" />
 				</p:graphicImage>
+				<br />
 				<h:outputText value="Farmer products"></h:outputText>
 				<p:dataTable id="productsdt" var="products"
 					value="#{addFarmer.farmer.productList}" editable="true"
@@ -56,13 +64,15 @@
 				<p:contextMenu for="productsdt">
 					<p:menuitem value="Add" icon="ui-icon-plus" update="productsdt"
 						actionListener="#{addFarmer.addProduct}" />
-					<p:menuitem value="Delete" icon="ui-icon-delete" update="productsdt"
-						actionListener="#{addFarmer.delProduct}" />
+					<p:menuitem value="Delete" icon="ui-icon-delete"
+						update="productsdt" actionListener="#{addFarmer.delProduct}" />
 				</p:contextMenu>
 
 
 				<p:commandButton value="Submit" icon="ui-icon-check" update="msgs"
 					actionListener="#{addFarmer.saveFarmer}" />
+				<p:commandButton value="Delete" update="msgs"
+					actionListener="#{addFarmer.delFarmer}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

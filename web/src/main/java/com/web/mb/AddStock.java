@@ -2,7 +2,6 @@ package com.web.mb;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +28,7 @@ public class AddStock implements Serializable {
 	private Date packedDate;
 	private Date receivedDate;
 	private Date expireDate;
+	private int counter;
 	private List<String> scaleLst = Arrays.asList(new String("1"), new String("2"), new String("5"), new String("10"),
 			new String("50"), new String("100"), new String("200"), new String("250"), new String("500"),
 			new String("750"));
@@ -87,10 +87,16 @@ public class AddStock implements Serializable {
 	public void setProStock(Stock proStock) {
 		this.proStock = proStock;
 	}
+	public int getCounter() {
+		return counter;
+	}
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
 	@PostConstruct
 	public void init(){
 		proStock = new Stock();
-		proStock.setPro(new Product());
+		//proStock.setPro(new Product());
 		categoryList = ProductServiceImpl.getObject().getCategoryName();
 		productList = ProductServiceImpl.getObject().getProductName();
 	}
@@ -104,6 +110,6 @@ public class AddStock implements Serializable {
 		proStock.setPackedDate(sfd.format(d));
 		d = getReceivedDate();
 		proStock.setReceivedDate((sfd.format(d)));
-		AdminServiceImpl.getObject().addStock(proStock);
+		AdminServiceImpl.getObject().addStock(proStock,counter);
 	}
 }

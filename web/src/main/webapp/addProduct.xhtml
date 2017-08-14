@@ -16,7 +16,9 @@
 				<p:growl id="msgs" showDetail="true" />
 				<h:outputText value="Product Name:"></h:outputText>
 				<p:inputText id="productName" required="true"
-					value="#{addProduct.pro.productName}"></p:inputText>
+					value="#{addProduct.pro.productName}"></p:inputText> 
+					<p:commandButton value="Get" update="msgs"
+					actionListener="#{addProduct.editProduct}" />
 				<br />
 				<h:outputText value="Product Desc:"></h:outputText>
 				<p:inputText label="Product Desc" required="true"
@@ -157,6 +159,8 @@
 				<br />
 				<p:commandButton value="Save" update=":addProductForm:msgs"
 					actionListener="#{addProduct.saveProduct}" />
+				<p:commandButton value="Delete" update="msgs"
+					actionListener="#{addProduct.delProduct}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

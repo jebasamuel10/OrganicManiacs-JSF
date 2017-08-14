@@ -45,11 +45,20 @@ public class AddCategory implements Serializable {
 	public void init() {
 		category = new Category();
 	}
-
+	public void editCategoryDtl() {
+		if(null!=category.getCategoryName()) {
+			category = AdminServiceImpl.getObject().editCategoryDtl(category.getCategoryName());
+		}
+	}
+	
+	public void delCategory() {
+		if(null!=category.getCategoryName()) {
+			AdminServiceImpl.getObject().deleteCategory(category.getCategoryName());
+		}
+	}
 	public void saveProduct() {
 		AdminServiceImpl.getObject().addCategory(category);
 	}
-
 	public void delProduct() {
 		category.getProductList().remove(selectedProduct);
 	}

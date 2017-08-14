@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
@@ -78,15 +77,19 @@ public class AddProduct implements Serializable {
 	}
 
 	public void saveProduct() {
-		System.out.println("Save...");
-		System.out.println("Save start" + pro);
 		if (null == pro.getDefaultImage() && null != pro.getImgList())
 			pro.setDefaultImage(pro.getImgList().get(0));
-		System.out.println("Save cntd..");
 		AdminServiceImpl.getObject().saveProduct(pro);
-		System.out.println("Save completed");
 	}
 
+	public void editProduct() {
+		if (null !=pro.getProductName())
+			pro=AdminServiceImpl.getObject().getProductDtls(pro.getProductName());
+	}
+	public void delProduct() {
+		if (null !=pro.getProductName())
+			AdminServiceImpl.getObject().deleProduct(pro.getProductName());
+	}
 	public void addRecipe(ActionEvent event) {
 		System.out.println("add Recipe");
 		System.out.println(pro.getRecipe());
